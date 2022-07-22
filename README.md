@@ -1,6 +1,6 @@
 # Insurance All Company Cross-Sell
 
-### Cross-sell propensity score list built with a Learning to Rank Model
+### Cross-sell propensity score list built with a Classification Model
 
 <img src="image/cover_insurance_all.png" width="1000">
 
@@ -8,21 +8,20 @@
 
 **Disclaimer:** Insurance All is a fictitious company, according to the context presented in this project.
 
-This Data Science project was inspired by this [kaggle challenge] and presents the development of a classification machine learning model, more specifically a learning to rank model, used to generate a propensity score to purchase a new product for a company's customer list. In the commercial arena, this sales strategy is known as Cross-Sell and can be defined as a sales technique that involves selling an additional product or service to an existing customer [Wikipedia](https://en.wikipedia.org /wiki /cross-sell).
+This **Data Science Project** was inspired by this [kaggle Challenge](https://www.kaggle.com/datasets/anmolkumar/health-insurance-cross-sell-prediction) and presents the development of a Classification Machine Learning Model, more specifically a Learning to Rank Model, used to generate a propensity score to purchase a new product for a company's customer list. 
 
-In the case of this project, we worked with two sets of data, both composed of Insurance All customers who already have the company's health plan. In the first one, we have the result of a survey carried out with about 380 thousand customers
+In the commercial arena, this sales strategy is known as Cross-Sell and can be defined as a sales technique that involves selling an additional product or service to an existing customer [(Wikipedia)](https://en.wikipedia.org/wiki/cross-sell).
+
+The list with the purchase propensity score was the solution found for a business limitation: from a dataset with 127 thousand customers, the sales team would be able to contact 20 thousand people during the campaign period. And compared to a random selection of customers to be contacted, the machine learning model developed proved to be about 3 times more efficient, generating an **extra gain of 25 million dollars**.
+
+At the end of the project, two data products were presented to the commercial team:
+
+* 1) The [ordered list](https://docs.google.com/spreadsheets/d/1vNiaBNN6GXCN-k3ZkEtUqUoJ2NzDeIdRT8PwRNMxO1c/edit?usp=sharing) of the 127 thousand customers classified by the highest purchase propensity;
+* 2) A [script](https://github.com/vitorhmf/cross-sell/blob/main/google_sheet_script/InsuranceAll.gs) to be put into Google Sheets that allows access to the trained model, put into production on Heroku Cloud. With this spreadsheet, as shown in the example below, the commercial team can easily perform simulations and queries on the purchase propensity of a specific group of customers.
 
 
-[ordered list](https://docs.google.com/spreadsheets/d/1vNiaBNN6GXCN-k3ZkEtUqUoJ2NzDeIdRT8PwRNMxO1c/edit?usp=sharing)
 
 
-<!-- This Data Science project was inspired by a challenge published on [kaggle](https://www.kaggle.com/c/rossmann-store-sales) and presents the construction of a Machine Learning algorithm to predict the 6-week sales of the Rossmann group, which is one of the largest drug store chains in Europe with around 56,200 employees and more than 4000 stores. 
-
-To develop this sales projection, was used a dataset with information from 1115 stores, between 2013-01-01 and 2015-07-31. The trained Regression Algorithm reached 88% of MAPE (Mean Absolute Percentage Error) and the estimated result of the total sales for the period was $287.176.128,00. All the solution was developed with Python language and the complete code is available in this [notebook](https://github.com/vitorhmf/sales-predict/blob/main/notebooks/v07_sales_forecast_deploy.ipynb).
-
-The solution was deployed at Heroku Cloud and the sales forecasts can be accessed through a Telegram bot available [here](https://t.me/vitorhmf_rossmann_bot).
-
-<img src="img/bot_telegram.jpg" width="250"> -->
 
 **Keywords:** Python, Regression Model, Random Forest, XGBoost, Scikit Learn, Pandas, Seaborn, Boruta, Flask, Heroku
 
@@ -49,7 +48,14 @@ To direct your reading, below are links to the development carried out at each s
 
 ### 3.1. Context
 
-<!-- Insurance All is a company that works with health insurance for its customers and now the product team is analyzing the possibility of offering a new product to its customers: auto insurance.
+The Insurance All is a company that works with health insurance for its customers and now the product team is analyzing the possibility of offering a new product to its customers: auto insurance.
+
+In this case, we worked with two datasets, both composed of Insurance All customers who already have the company's health insurance. In the first one, we have the result of a survey carried out with about 380 thousand customers.
+
+* In the first dataset, we have the result of a survey carried out with 381,109 customers. This result was saved in the database along with other customer attributes.
+* In the second dataset, we have the attributes of another 127 thousand customers, who did not respond to the survey. These customers will be offered the new auto insurance product.
+
+<!-- 
 
 As with health insurance, customers of this new car insurance plan need to pay an amount annually to Insurance All to obtain an amount insured by the company, intended for the costs of an eventual accident or damage to the vehicle.
 
