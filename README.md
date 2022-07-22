@@ -1,10 +1,17 @@
-# Insurance All Cross-Sell
+# Insurance All Company Cross-Sell
 
 ### Cross-sell propensity score list built with a Learning to Rank Model
 
 <img src="image/cover_insurance_all.png" width="1000">
 
 ## 1. Abstract:
+
+**Disclaimer:** Insurance All is a fictitious company, according to the context presented in this project.
+
+This Data Science project was inspired by this [kaggle challenge] and presents the development of a classification machine learning model, more specifically a learning to rank model, used to generate a propensity score to purchase a new product for a company's customer list. In the commercial arena, this sales strategy is known as Cross-Sell and can be defined as a sales technique that involves selling an additional product or service to an existing customer [Wikipedia](https://en.wikipedia.org /wiki /cross-sell).
+
+In the case of this project, we worked with two sets of data, both composed of Insurance All customers who already have the company's health plan. In the first one, we have the result of a survey carried out with about 380 thousand customers
+
 
 [ordered list](https://docs.google.com/spreadsheets/d/1vNiaBNN6GXCN-k3ZkEtUqUoJ2NzDeIdRT8PwRNMxO1c/edit?usp=sharing)
 
