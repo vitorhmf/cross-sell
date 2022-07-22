@@ -1,4 +1,4 @@
-# All Insurance Cross-Sell
+# Insurance All Cross-Sell
 
 ### Cross-sell propensity score list built with a Learning to Rank Model
 
@@ -8,7 +8,6 @@
 
 [ordered list](https://docs.google.com/spreadsheets/d/1vNiaBNN6GXCN-k3ZkEtUqUoJ2NzDeIdRT8PwRNMxO1c/edit?usp=sharing)
 
-[propensity score test](https://docs.google.com/spreadsheets/d/1rQvrcehCN5BpH0nP24o4w-kKA-qOEUggYXRWFweTwus/edit?usp=sharing)
 
 <!-- This Data Science project was inspired by a challenge published on [kaggle](https://www.kaggle.com/c/rossmann-store-sales) and presents the construction of a Machine Learning algorithm to predict the 6-week sales of the Rossmann group, which is one of the largest drug store chains in Europe with around 56,200 employees and more than 4000 stores. 
 
