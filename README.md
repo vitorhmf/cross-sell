@@ -2,7 +2,7 @@
 
 ### Cross-sell propensity score list built with a Learning to Rank Model
 
-<img src="image/insurance_all.jpg" width="1000">
+<img src="image/cover_insurance_all.png" width="1000">
 
 ## 1. Abstract:
 
@@ -22,7 +22,7 @@ The CRISP-DM methodology was the guide for this data science project development
 
 CRISP-DM, which stands for Cross-Industry Standard Process for Data Mining, is an industry-proven way to guide your data mining efforts and it includes descriptions of the typical phases of a project, the tasks involved with each phase, and an explanation of the relationships between these tasks.
 
-<img src="img/crisp_process.jpg" width="500">
+<img src="image/crisp_process.jpg" width="500">
 
 **Source:* [IBM Docs](https://www.ibm.com/docs/en/spss-modeler/18.2.0?topic=dm-crisp-help-overview)
 
@@ -61,8 +61,8 @@ However, the sales team has the capacity to make 20,000 calls within the campaig
 | vehicle_damage         | 1 : Customer got his/her vehicle damaged in the past. 0 : Customer didn't get his/her vehicle damaged in the past. |
 | anual_pemium           | The amount customer needs to pay as premium in the year                                                  |
 | policysaleschannel     | Anonymized Code for the channel of outreaching to the customer ie. Different Agents, Over Mail, Over Phone, In Person, etc. |
-| Vintage                | Number of Days, Customer has been associated with the company                                            |
-| Response               | 1 : Customer is interested, 0 : Customer is not interested                                               |
+| vintage                | Number of Days, Customer has been associated with the company                                            |
+| response               | 1 : Customer is interested, 0 : Customer is not interested                                               |
 
 *Source:* [Kaggle](https://www.kaggle.com/datasets/anmolkumar/health-insurance-cross-sell-prediction)
 
