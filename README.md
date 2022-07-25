@@ -20,10 +20,11 @@ At the end of the project, two data products were presented to the commercial te
 * 2) A [script](https://github.com/vitorhmf/cross-sell/blob/main/google_sheet_script/InsuranceAll.gs) to be put into Google Sheets that allows access to the trained model, put into production on Heroku Cloud. With this spreadsheet, as shown in the example below, the commercial team can easily perform simulations and queries on the purchase propensity of a specific group of customers.
 
 
+<img src="image/propensity_score_simulation.gif" width="800">
 
 
 
-**Keywords:** Python, Regression Model, Random Forest, XGBoost, Scikit Learn, Pandas, Seaborn, Boruta, Flask, Heroku
+**Keywords:** Python, Pandas, Numpy, Seaborn, Matplotlib, Pickle, Scikit Learn, Classification Model, Random Forest, XGBoost, KNN, LGBM, Flask, Heroku
 
 ## 2. Methodology
 
