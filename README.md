@@ -1,20 +1,30 @@
-# All Insurance Cross-Sell
+# Insurance All Company Cross-Sell
 
-### Cross-sell propensity score list built with a Learning to Rank Model
+### Cross-sell propensity score list built with a Classification Model
 
-<img src="image/insurance_all.jpg" width="1000">
+<img src="image/cover_insurance_all.png" width="1000">
 
 ## 1. Abstract:
 
-<!-- This Data Science project was inspired by a challenge published on [kaggle](https://www.kaggle.com/c/rossmann-store-sales) and presents the construction of a Machine Learning algorithm to predict the 6-week sales of the Rossmann group, which is one of the largest drug store chains in Europe with around 56,200 employees and more than 4000 stores. 
+**Disclaimer:** Insurance All is a fictitious company, according to the context presented in this project.
 
-To develop this sales projection, was used a dataset with information from 1115 stores, between 2013-01-01 and 2015-07-31. The trained Regression Algorithm reached 88% of MAPE (Mean Absolute Percentage Error) and the estimated result of the total sales for the period was $287.176.128,00. All the solution was developed with Python language and the complete code is available in this [notebook](https://github.com/vitorhmf/sales-predict/blob/main/notebooks/v07_sales_forecast_deploy.ipynb).
+This **Data Science Project** was inspired by this [kaggle Challenge](https://www.kaggle.com/datasets/anmolkumar/health-insurance-cross-sell-prediction) and presents the development of a Classification Machine Learning Model, more specifically a Learning to Rank Model, used to generate a propensity score to purchase a new product for a company's customer list. 
 
-The solution was deployed at Heroku Cloud and the sales forecasts can be accessed through a Telegram bot available [here](https://t.me/vitorhmf_rossmann_bot).
+In the commercial area, this sales strategy is known as Cross-Sell and can be defined as a sales technique that involves selling an additional product or service to an existing customer [(Wikipedia)](https://en.wikipedia.org/wiki/cross-sell).
 
-<img src="img/bot_telegram.jpg" width="250"> -->
+The list with the purchase propensity score was the solution found for a business limitation: from a dataset with 127 thousand customers, the sales team would be able to contact 20 thousand people during the campaign period. And compared to a random selection of customers to be contacted, the machine learning model developed proved to be about 3 times more efficient, generating an extra gain of 25 million dollars.
 
-**Keywords:** Python, Regression Model, Random Forest, XGBoost, Scikit Learn, Pandas, Seaborn, Boruta, Flask, Heroku
+**At the end of the project, two data products were presented to the commercial team:**
+
+* 1) The [ordered list](https://docs.google.com/spreadsheets/d/1vNiaBNN6GXCN-k3ZkEtUqUoJ2NzDeIdRT8PwRNMxO1c/edit?usp=sharing) of the 127 thousand customers classified by the highest purchase propensity;
+* 2) A [script](https://github.com/vitorhmf/cross-sell/blob/main/google_sheet_script/InsuranceAll.gs) to be put into Google Sheets that allows access to the trained model, put into production on Heroku Cloud. With this spreadsheet, as shown in the example below, the commercial team can easily perform simulations and queries on the purchase propensity of a specific group of customers.
+
+
+<img src="image/propensity_score_simulation.gif" width="800">
+
+
+
+**Keywords:** Python, Pandas, Numpy, Seaborn, Matplotlib, Pickle, Scikit Learn, Classification Model, Random Forest, XGBoost, KNN, LGBM, Flask, Heroku
 
 ## 2. Methodology
 
@@ -22,7 +32,7 @@ The CRISP-DM methodology was the guide for this data science project development
 
 CRISP-DM, which stands for Cross-Industry Standard Process for Data Mining, is an industry-proven way to guide your data mining efforts and it includes descriptions of the typical phases of a project, the tasks involved with each phase, and an explanation of the relationships between these tasks.
 
-<img src="img/crisp_process.jpg" width="500">
+<img src="image/crisp_process.jpg" width="500">
 
 **Source:* [IBM Docs](https://www.ibm.com/docs/en/spss-modeler/18.2.0?topic=dm-crisp-help-overview)
 
@@ -39,15 +49,16 @@ To direct your reading, below are links to the development carried out at each s
 
 ### 3.1. Context
 
-<!-- Insurance All is a company that works with health insurance for its customers and now the product team is analyzing the possibility of offering a new product to its customers: auto insurance.
+The Insurance All is a company that works with health insurance for its customers and now the product team is analyzing the possibility of offering a new product to its customers: auto insurance.
 
-As with health insurance, customers of this new car insurance plan need to pay an amount annually to Insurance All to obtain an amount insured by the company, intended for the costs of an eventual accident or damage to the vehicle.
+In this case, we worked with two datasets, both composed of Insurance All customers who already have the company's health insurance.
 
-Insurance All surveyed 381,109 customers about their interest in joining a new auto insurance product last year. All customers showed interest or not in purchasing auto insurance and these responses were saved in a database along with other customer attributes.
+* In the first dataset, we have the result of a survey carried out with 381,109 customers. This result was saved in the database along with other customer attributes.
+* In the second dataset, we have the attributes of another 127,037 customers, who did not respond to the survey. These customers will be offered the new auto insurance product.
 
-The product team selected 127,000 new customers who did not respond to the survey to participate in a campaign, in which they will be offered the new auto insurance product. The offer will be made by the sales team through phone calls.
+Considering that the sales team has the capacity to make 20,000 calls within the campaign period, we need to answer the business team what percentage of customers interested in purchasing auto insurance, the sales team will be able to contact by making the 20,000 calls.
 
-However, the sales team has the capacity to make 20,000 calls within the campaign period. -->
+And if the sales team's capacity increases to 40,000 calls, what percentage of customers interested in purchasing auto insurance will the sales team be able to contact?
 
 | Feature                | Definition                                                                                               |
 |------------------------|----------------------------------------------------------------------------------------------------------|
@@ -61,21 +72,15 @@ However, the sales team has the capacity to make 20,000 calls within the campaig
 | vehicle_damage         | 1 : Customer got his/her vehicle damaged in the past. 0 : Customer didn't get his/her vehicle damaged in the past. |
 | anual_pemium           | The amount customer needs to pay as premium in the year                                                  |
 | policysaleschannel     | Anonymized Code for the channel of outreaching to the customer ie. Different Agents, Over Mail, Over Phone, In Person, etc. |
-| Vintage                | Number of Days, Customer has been associated with the company                                            |
-| Response               | 1 : Customer is interested, 0 : Customer is not interested                                               |
+| vintage                | Number of Days, Customer has been associated with the company                                            |
+| response               | 1 : Customer is interested, 0 : Customer is not interested                                               |
 
 *Source:* [Kaggle](https://www.kaggle.com/datasets/anmolkumar/health-insurance-cross-sell-prediction)
 
 
 ### 3.2. Business assumption: 
-<!--
-* Null values of competitor distance were replaced to 200.000 meters, assuming that there are no competitors.
-* Days when the stores were closed, were not considered
-* For the missing values in the "Competition Open Since" variable, the approximate year and month were defined as the value from the column Date. 
-* The same was done for the variable "Promo 2 Since".
 
-[Back to the top](https://github.com/vitorhmf/sales-predict#2-methodology)
--->
+* For educational purposes only, the dollar has been set as the default currency for the problem.
  
 ## 4. Data Understanding
 
