@@ -98,7 +98,7 @@ A quick descriptive analysis of numerical and categorical variables was performe
  
 **Numerical Attributes:**
 
-<img src="image/num_attributes.png" width="800">
+<img src="image/num_attributes.png" width="600">
 
 **Categorical Attributes:**
 
@@ -108,52 +108,72 @@ A quick descriptive analysis of numerical and categorical variables was performe
 
 Before performing the feature engineering, a mental map was created to evaluate the relationship between the sales phenomenon and the agents that act on it, as well as the attributes of each agent.
 
-<img src="img/mind_map.png" width="1000">
+<img src="image/mind_map.png" width="800">
 
 From this mental map, business hypotheses were created in order to develop the understanding of the case and raise new variables that are important to derive from the original dataset for the creation of the machine learning model.
  
 In this step, the following features were created:
-* Features derived from the Date variable: Year, Month, Day, Week of Year, Year Week. 
-* Assortment: a = 'basic'; b = 'extra'; c = 'extended'
-* State Holiday: a = 'public holiday; b = 'easter holiday'; c = 'christmas
-* Other Features: “Competition Since” and “Promo Since”
+* Vehicle Age: changed to snake case;
+* Vehicle Damage: changed to 1 (yes) or 0 (no);
 
 ### 4.4. Data Filtering
 
-* Filtered the rows for open stores.
-* Filtered the rows for sales greater than zero.
-* Exclude columns already used to create new features.
-* Exclude columns with a single value.
+In this project, it was not necessary to apply any type of filter to the dataset
 
 ### 4.5. Exploratory Data Analysis
 
-In the data exploration, univariate, bivariate and multivariate analyzes were performed. Of the business insights obtained in this phase, two stood out for presenting different results than expected:
+In the data exploration, univariate, bivariate and multivariate analyzes were performed. Of the business insights obtained in this phase, 3 stood out for presenting different results than expected:
 
-**Stores with closer competitors sell more:**
+**Younger drivers aren't more likely to buy vehicle insurance.** Just 6,1% of the young group (20-35) are likely to buy, while 20,9% of the adults group (35-55) and 11,8% of the seniors (55+) group are likely to buy.
 
-<img src="img/competition_distance.png" width="800">
+<img src="image/h2.png" width="600">
 
-**Stores with longer promotions sell less:**
+**Customers with older cars are more likely to buy:** Just 4% of customers with cars less than one year old were interested in insurance.
 
-<img src="img/promo_time_week.png" width="800">
+<img src="image/h7.png" width="600">
 
-[Complete Notebook](https://github.com/vitorhmf/sales-predict/blob/main/notebooks/v02_sales_forecast_eda.ipynb) | [Back to the top](https://github.com/vitorhmf/sales-predict#2-methodology)
+**Customers that already had vehicle damage are more likely to buy:** The surprise here was that practically no one showed interest in the group of those who had no previous accidents.
+
+<img src="image/h8.png" width="600">
+
+[Complete Notebook](https://github.com/vitorhmf/cross-sell/blob/main/notebooks/v07_cross_sell_review2.ipynb) | [Back to the top](https://github.com/vitorhmf/sales-predict#2-methodology)
  
 ## 5. Data Preparation
 
-* Standarditazion: not used because none of the variables showed a normal curve;
-* Rescaling: in numerical variables, the MinMax Scaler and Robust Scaler methods were used to balance the range of each variable
-* Encoding - applied to categorical variables
-* Nature Transformation - for cyclic variables such as month, day and week a sine and cosine transformation was applied
-* Feature Selection: the variables to be used in the machine learning model were selected using the Boruta algorithm
+### 5.1 Feature Transformation
+
+* Standarditazion: 'annual premium';
+* Rescaling: 'age' and 'vintage' with the MinMaxScaler;
+* Encoding: 'gender' and 'region code' with Target Encoding; 'vehicle age' with One Target Encoding; and 'policy sales channel' with Frequency Encoding;
+
+### 5.2 Feature Selection: 
+
+The feature selection was performed using the extra trees classifier algorithm
+
+<img src="image/features_importantes2.png" width="300">
+
+<img src="image/features_importances1.png" width="600">
+
+To work with machine learning algorithms, these columns were then selected:
+
+* 'annual_premium',
+* 'vintage',
+* 'age',
+* 'region_code',
+* 'vehicle_damage',
+* 'previously_insured',
+* 'policy_sales_channel'
 
 [Complete Notebook](https://github.com/vitorhmf/sales-predict/blob/main/notebooks/v04_sales_forecast_feature_selection.ipynb) | [Back to the top](https://github.com/vitorhmf/sales-predict#2-methodology)
+
 
 ## 6. Machine Learning Modeling
 
 ### 6.1. Comparative Model Performance (with Cross Validation)
 
-<img src="img/Real Performance - Cross Validation.png" width="500">
+<img src="image/cv_result.png" width="300">
+
+<!--
 
 The model chosen for the solution was XGBoost. Despite not having achieved the best result, it ended up being the best option when analyzing the cost/benefit of the solution.
 
@@ -206,7 +226,7 @@ The total revenue forecast for the next 6 weeks is presented below, considering 
 * Rerun the CRISP cycle to improve machine learning model results.
 * Add new functionality in Telegram bot to improve user experience.
 
-[Back to the top](https://github.com/vitorhmf/sales-predict#2-methodology)
+[Back to the top](https://github.com/vitorhmf/sales-predict#2-methodology) 
 
 ## 10. References
 
