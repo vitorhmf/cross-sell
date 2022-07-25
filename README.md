@@ -1,4 +1,4 @@
-# Insurance All Company Cross-Sell
+# Insurance All Cross-Sell
 
 ### Cross-sell propensity score list built with a Classification Model
 
@@ -85,12 +85,11 @@ And if the sales team's capacity increases to 40,000 calls, what percentage of c
 ## 4. Data Understanding
 
 ### 4.1. Data Cleaning
-<!--
+
 To build an overview of the data, the following steps were performed:
 * Change the columns name to sneak_case;
 * Shows the data dimensions (rows and columns);
-* Check and Fillout NA: for the missing values in the "Competition Open Since" variable, the approximate year and month were defined as the value from the column Date. The same was done for the variable "Promo 2 Since";
-* Change types from float64 to int64;
+* Check and Fillout NA: the dataset did not have any missing values;
 
 
 ### 4.2 Data Descriptive: 
@@ -99,17 +98,17 @@ A quick descriptive analysis of numerical and categorical variables was performe
  
 **Numerical Attributes:**
 
-<img src="img/num_attributes.png" width="800">
+<img src="image/num_attributes.png" width="800">
 
 **Categorical Attributes:**
 
-<img src="img/cat_attributes.png" width="800">
+<img src="image/cat_attributes.png" width="800">
  
 ### 4.3. Feature Engineering
 
 Before performing the feature engineering, a mental map was created to evaluate the relationship between the sales phenomenon and the agents that act on it, as well as the attributes of each agent.
 
-<img src="img/MindMapHypothesis.png" width="1000">
+<img src="img/mind_map.png" width="1000">
 
 From this mental map, business hypotheses were created in order to develop the understanding of the case and raise new variables that are important to derive from the original dataset for the creation of the machine learning model.
  
