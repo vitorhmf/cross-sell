@@ -10,11 +10,11 @@
 
 This **Data Science Project** was inspired by this [kaggle Challenge](https://www.kaggle.com/datasets/anmolkumar/health-insurance-cross-sell-prediction) and presents the development of a Classification Machine Learning Model, more specifically a Learning to Rank Model, used to generate a propensity score to purchase a new product for a company's customer list. 
 
-In the commercial arena, this sales strategy is known as Cross-Sell and can be defined as a sales technique that involves selling an additional product or service to an existing customer [(Wikipedia)](https://en.wikipedia.org/wiki/cross-sell).
+In the commercial area, this sales strategy is known as Cross-Sell and can be defined as a sales technique that involves selling an additional product or service to an existing customer [(Wikipedia)](https://en.wikipedia.org/wiki/cross-sell).
 
-The list with the purchase propensity score was the solution found for a business limitation: from a dataset with 127 thousand customers, the sales team would be able to contact 20 thousand people during the campaign period. And compared to a random selection of customers to be contacted, the machine learning model developed proved to be about 3 times more efficient, generating an **extra gain of 25 million dollars**.
+The list with the purchase propensity score was the solution found for a business limitation: from a dataset with 127 thousand customers, the sales team would be able to contact 20 thousand people during the campaign period. And compared to a random selection of customers to be contacted, the machine learning model developed proved to be about 3 times more efficient, generating an extra gain of 25 million dollars.
 
-At the end of the project, two data products were presented to the commercial team:
+**At the end of the project, two data products were presented to the commercial team:**
 
 * 1) The [ordered list](https://docs.google.com/spreadsheets/d/1vNiaBNN6GXCN-k3ZkEtUqUoJ2NzDeIdRT8PwRNMxO1c/edit?usp=sharing) of the 127 thousand customers classified by the highest purchase propensity;
 * 2) A [script](https://github.com/vitorhmf/cross-sell/blob/main/google_sheet_script/InsuranceAll.gs) to be put into Google Sheets that allows access to the trained model, put into production on Heroku Cloud. With this spreadsheet, as shown in the example below, the commercial team can easily perform simulations and queries on the purchase propensity of a specific group of customers.
@@ -51,20 +51,14 @@ To direct your reading, below are links to the development carried out at each s
 
 The Insurance All is a company that works with health insurance for its customers and now the product team is analyzing the possibility of offering a new product to its customers: auto insurance.
 
-In this case, we worked with two datasets, both composed of Insurance All customers who already have the company's health insurance. In the first one, we have the result of a survey carried out with about 380 thousand customers.
+In this case, we worked with two datasets, both composed of Insurance All customers who already have the company's health insurance.
 
 * In the first dataset, we have the result of a survey carried out with 381,109 customers. This result was saved in the database along with other customer attributes.
-* In the second dataset, we have the attributes of another 127 thousand customers, who did not respond to the survey. These customers will be offered the new auto insurance product.
+* In the second dataset, we have the attributes of another 127,037 customers, who did not respond to the survey. These customers will be offered the new auto insurance product.
 
-<!-- 
+Considering that the sales team has the capacity to make 20,000 calls within the campaign period, we need to answer the business team what percentage of customers interested in purchasing auto insurance, the sales team will be able to contact by making the 20,000 calls.
 
-As with health insurance, customers of this new car insurance plan need to pay an amount annually to Insurance All to obtain an amount insured by the company, intended for the costs of an eventual accident or damage to the vehicle.
-
-Insurance All surveyed 381,109 customers about their interest in joining a new auto insurance product last year. All customers showed interest or not in purchasing auto insurance and these responses were saved in a database along with other customer attributes.
-
-The product team selected 127,000 new customers who did not respond to the survey to participate in a campaign, in which they will be offered the new auto insurance product. The offer will be made by the sales team through phone calls.
-
-However, the sales team has the capacity to make 20,000 calls within the campaign period. -->
+And if the sales team's capacity increases to 40,000 calls, what percentage of customers interested in purchasing auto insurance will the sales team be able to contact?
 
 | Feature                | Definition                                                                                               |
 |------------------------|----------------------------------------------------------------------------------------------------------|
@@ -85,14 +79,8 @@ However, the sales team has the capacity to make 20,000 calls within the campaig
 
 
 ### 3.2. Business assumption: 
-<!--
-* Null values of competitor distance were replaced to 200.000 meters, assuming that there are no competitors.
-* Days when the stores were closed, were not considered
-* For the missing values in the "Competition Open Since" variable, the approximate year and month were defined as the value from the column Date. 
-* The same was done for the variable "Promo 2 Since".
 
-[Back to the top](https://github.com/vitorhmf/sales-predict#2-methodology)
--->
+* For educational purposes only, the dollar has been set as the default currency for the problem.
  
 ## 4. Data Understanding
 
