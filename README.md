@@ -171,44 +171,47 @@ To work with machine learning algorithms, these columns were then selected:
 
 ### 6.1. Comparative Model Performance (with Cross Validation)
 
+For this project, 6 classification models were tested:
+- K Nearest Neighbors (KNN)
+- Logistic Regression (LR)
+- Extra Trees (ET)
+- Random Forest (RF)
+- XGBoost (XGB)
+- LightGBM (XGM)
+
+And the result of these models were analyzed and compared using 2 metrics: precision and recall at K. Basically, the **precision at k** measures how many records the model predicted to be true actually were. And the **recall at k** shows the percentage of all true records in the dataset how many the model predicted there would be.
+
 <img src="image/cv_result.png" width="300">
 
-<!--
-
-The model chosen for the solution was XGBoost. Despite not having achieved the best result, it ended up being the best option when analyzing the cost/benefit of the solution.
-
-### 6.2. Hyperparameter Fine Tunning
-
-After performing the Fine Tunning process, the model reached a MAPE of 88%.
-
-<img src="img/Hyperparameter Fine Tunning.png" width="500">
-
-The parameters used to achieve these results were:
-
- * n_estimators: 3000
- * eta: 0.03
- * max_depth: 5
- * subsample: 0.7
- * colsample_bytree: 0.7
- * min_child_weight: 3
+Due to its better results, good processing speed, and good storage size, the LightGBM model was chosen to be put into production.
 
 [Complete Notebook](https://github.com/vitorhmf/sales-predict/blob/main/notebooks/v06_sales_forecast_fine_tunning.ipynb) | [Back to the top](https://github.com/vitorhmf/sales-predict#2-methodology)
 
 ## 7. Evaluation
 
-<img src="img/ml_evaluation.png" width= "1000">
+According to the Cumulative Gain chart below, by contacting approximately 30% of the list, about 80% of interested customers would be reached. This equates, as can be seen by Lift Curve, to about 3 times more productive than a random model. 
+
+For the purposes of this project, this result has already met expectations, eliminating, for example, the need to balance data or test new models.
+
+<img src="image/lgbm_result.png" width="800">
 
 [Complete Notebook](https://github.com/vitorhmf/sales-predict/blob/main/notebooks/v06_sales_forecast_fine_tunning.ipynb) | [Back to the top](https://github.com/vitorhmf/sales-predict#2-methodology)
 
 ## 8. Deployment
 
-* **1. Telegram bot:** the bot receives the Telegram message, validates the information and forwards the data to the Handler API. The code was built using the Flask package and deployed on heroku cloud. [Here](https://github.com/vitorhmf/sales-predict/blob/main/rossmann-telegram-api/rossmann-bot.py) you can check the complete Telegram bot code.
-* **2. Handler API:** this API receives the data from the bot, accesses the trained model and returns the prediction to the bot. The code was built using the Flask package and deployed on heroku cloud. [Here](https://github.com/vitorhmf/sales-predict/blob/main/api/handler.py) you can check the complete Handler API code.
-* **3. Rossmann Class:** the Rossmann Class runs the developed machine learning model and returns with the requested sales forecast. [Here](https://github.com/vitorhmf/sales-predict/blob/main/api/rossmann/Rossmann.py) you can check the complete class code.
+Two data products were presented to the commercial team:
+
+The first was the [ordered list](https://docs.google.com/spreadsheets/d/1vNiaBNN6GXCN-k3ZkEtUqUoJ2NzDeIdRT8PwRNMxO1c/edit?usp=sharing) with the 127 thousand customers classified by the highest propensity to purchase score.
+
+The second was the script for google sheets that works from these 3 codes:
+
+* **1. Google Script:** A script to be put into Google Sheets that allows access to the trained model, put into production on Heroku Cloud. With this spreadsheet, as shown in the example below, the commercial team can easily perform simulations and queries on the purchase propensity of a specific group of customers. [Here](https://github.com/vitorhmf/cross-sell/blob/main/google_sheet_script/InsuranceAll.gs) you can check the complete sript code.
+* **2. Handler API:** this API receives the data from the script, accesses the trained model and returns the purchase propensity score. The code was built using the Flask package and deployed on heroku cloud. [Here](https://github.com/vitorhmf/cross-sell/blob/main/api/handler.py) you can check the complete Handler API code.
+* **3. HealthInsurance Class:** the HealthInsurance Class runs the developed machine learning model and returns with the requested purchase propensity score. [Here](https://github.com/vitorhmf/cross-sell/blob/main/api/HealthInsurance.py) you can check the complete class code.
 
 The final solution could be access [here](https://t.me/vitorhmf_rossmann_bot).
 
-<img src="img/bot_telegram.jpg" width="250">
+<img src="image/propensity_score_simulation.gif" width="800">
 
 
 [Back to the top](https://github.com/vitorhmf/sales-predict#2-methodology)
