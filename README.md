@@ -81,6 +81,8 @@ And if the sales team's capacity increases to 40,000 calls, what percentage of c
 ### 3.2. Business assumption: 
 
 * For educational purposes only, the dollar has been set as the default currency for the problem.
+
+[Back to the top](https://github.com/vitorhmf/cross-sell#2-methodology)
  
 ## 4. Data Understanding
 
