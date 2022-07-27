@@ -136,7 +136,7 @@ In the data exploration, univariate, bivariate and multivariate analyzes were pe
 
 <img src="image/h8.png" width="600">
 
-[Complete Notebook](https://github.com/vitorhmf/cross-sell/blob/main/notebooks/v07_cross_sell_review2.ipynb) | [Back to the top](https://github.com/vitorhmf/sales-predict#2-methodology)
+[Complete Notebook](https://github.com/vitorhmf/cross-sell/blob/main/notebooks/v07_cross_sell_review2.ipynb) | [Back to the top](https://github.com/vitorhmf/cross-sell#2-methodology)
  
 ## 5. Data Preparation
 
@@ -164,7 +164,7 @@ To work with machine learning algorithms, these columns were then selected:
 * 'previously_insured',
 * 'policy_sales_channel'
 
-[Complete Notebook](https://github.com/vitorhmf/sales-predict/blob/main/notebooks/v04_sales_forecast_feature_selection.ipynb) | [Back to the top](https://github.com/vitorhmf/sales-predict#2-methodology)
+[Complete Notebook](https://github.com/vitorhmf/cross-sell/blob/main/notebooks/v07_cross_sell_review2.ipynb) | [Back to the top](https://github.com/vitorhmf/cross-sell#2-methodology)
 
 
 ## 6. Machine Learning Modeling
@@ -185,7 +185,7 @@ And the result of these models were analyzed and compared using 2 metrics: preci
 
 Due to its better results, good processing speed, and good storage size, the LightGBM model was chosen to be put into production.
 
-[Complete Notebook](https://github.com/vitorhmf/sales-predict/blob/main/notebooks/v06_sales_forecast_fine_tunning.ipynb) | [Back to the top](https://github.com/vitorhmf/sales-predict#2-methodology)
+[Complete Notebook](https://github.com/vitorhmf/cross-sell/blob/main/notebooks/v07_cross_sell_review2.ipynb) | [Back to the top](https://github.com/vitorhmf/cross-sell#2-methodology)
 
 ## 7. Evaluation
 
@@ -195,7 +195,7 @@ For the purposes of this project, this result has already met expectations, elim
 
 <img src="image/lgbm_result.png" width="800">
 
-[Complete Notebook](https://github.com/vitorhmf/sales-predict/blob/main/notebooks/v06_sales_forecast_fine_tunning.ipynb) | [Back to the top](https://github.com/vitorhmf/sales-predict#2-methodology)
+[Complete Notebook](https://github.com/vitorhmf/cross-sell/blob/main/notebooks/v07_cross_sell_review2.ipynb) | [Back to the top](https://github.com/vitorhmf/cross-sell#2-methodology)
 
 ## 8. Deployment
 
@@ -209,35 +209,28 @@ The second was the script for google sheets that works from these 3 codes:
 * **2. Handler API:** this API receives the data from the script, accesses the trained model and returns the purchase propensity score. The code was built using the Flask package and deployed on heroku cloud. [Here](https://github.com/vitorhmf/cross-sell/blob/main/api/handler.py) you can check the complete Handler API code.
 * **3. HealthInsurance Class:** the HealthInsurance Class runs the developed machine learning model and returns with the requested purchase propensity score. [Here](https://github.com/vitorhmf/cross-sell/blob/main/api/HealthInsurance.py) you can check the complete class code.
 
-The final solution could be access [here](https://t.me/vitorhmf_rossmann_bot).
-
 <img src="image/propensity_score_simulation.gif" width="800">
 
-
-[Back to the top](https://github.com/vitorhmf/sales-predict#2-methodology)
+[Back to the top](https://github.com/vitorhmf/cross-sell#2-methodology)
 
 ## 9. Conclusion
 
 ### 9.1. Business Results
 
-The total revenue forecast for the next 6 weeks is presented below, considering the worst and best scenario according to the model. And the detailed sales forecast by store can be consulted through a Telegram bot, available at this [link](https://t.me/vitorhmf_rossmann_bot).
+By making 20,000 calls, the sales team will reach 48.0% of interested customers. Compared to a random list ranking model, Insurance All would have an extra result of $25,120,000.00.
 
-<img src="img/final_result.png" width="300">
+And if the company manages to increase its call capacity and reach 40,000 calls, the sales team will be able to reach 80.8% of interested customers. This would represent an extra result of $39,095,000.00, compared to performing random calls.
 
 ### 9.2. Next Steps
 
-* Rerun the CRISP cycle to improve machine learning model results.
-* Add new functionality in Telegram bot to improve user experience.
+* Rerun the CRISP cycle, testing new features to improve machine learning model results.
 
-[Back to the top](https://github.com/vitorhmf/sales-predict#2-methodology) 
+[Back to the top](https://github.com/vitorhmf/cross-sell#2-methodology) 
 
 ## 10. References
 
 * [IBM Docs](https://www.ibm.com/docs/en/spss-modeler/18.2.0?topic=dm-crisp-help-overview)
 * [Kaggle](https://www.kaggle.com/datasets/anmolkumar/health-insurance-cross-sell-prediction)
 * [Comunidade DS](https://www.comunidadedatascience.com/)
-* [Docs do google script](https://core.telegram.org/bots/api)
 
-[Back to the top](https://github.com/vitorhmf/sales-predict#2-methodology)
-
--->
+[Back to the top](https://github.com/vitorhmf/cross-sell#2-methodology)
