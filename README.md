@@ -38,7 +38,7 @@ CRISP-DM, which stands for Cross-Industry Standard Process for Data Mining, is a
 
 To direct your reading, below are links to the development carried out at each stage of the CRISP cycle:
 
-* [Business Understanding](https://github.com/vitorhmf/cross-sell/blob/main/README.md#3-business-understanding)
+* [Business Understanding](https://github.com/vitorhmf/cross-sell#3-business-understanding)
 * [Data Understanding](https://github.com/vitorhmf/cross-sell#4-data-understanding)
 * [Data Preparation](https://github.com/vitorhmf/cross-sell#5-data-preparation)
 * [Machine Learning Modeling](https://github.com/vitorhmf/cross-sell#6-machine-learning-modeling)
